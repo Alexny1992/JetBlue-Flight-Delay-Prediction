@@ -1,12 +1,13 @@
-from data_loading import data_loading, filter_data, prepare_data, convert_to_pandas
+from src.data_loading import data_loading, filter_data, prepare_data, convert_to_pandas
 import numpy as np
 import os
 from pyspark.sql import SparkSession
-from data_visualization import plot_data_matplotlib, plot_data_d3, plot_forecast, plot_forecast_components
-from prophet_module import training_split, fb_prophet, test_split, coefficient_regressor, future_dataframe, forcast, prediction, error_calculation
-from cross_validation import run_cross_validation, calculate_performance_metrics, evaluate_model, hyperparameter_tuning
+from src.data_visualization import plot_data_matplotlib, plot_data_d3, plot_forecast, plot_forecast_components
+from src.prophet_module import training_split, fb_prophet, test_split, coefficient_regressor, future_dataframe, forcast, prediction, error_calculation
+from src.cross_validation import run_cross_validation, calculate_performance_metrics, evaluate_model, hyperparameter_tuning
 
-file_path = '/Users/alexwang/Downloads/Airline Delay Cause.csv'
+
+file_path = '/Users/alexwang/Documents/Alex_Work/JetBlue-Flight-Delay-Prediction/Data/JetBlue Delay Cause.csv'
 data = data_loading(file_path)
 
 carrier_name = 'JetBlue Airways'
@@ -36,13 +37,13 @@ print(forcast)
 prediction = prediction(forcast)
 error = error_calculation(test_set_pd, prediction)
 plot_forecast(m, forcast)
-# plot_forecast_components(m, forcast)
+plot_forecast_components(m, forcast)
 
 
-# Using cross validation to see how to refine parameters
-df_cv = run_cross_validation(model = m)
-df_p, mae, rmse = calculate_performance_metrics(df_cv)
-best_params, best_rmse = hyperparameter_tuning(training_set_pd)
-print("Best Parameters:", best_params)
-print("Best RMSE:", best_rmse)
-evaluate_model(best_params, training_set_pd)
+# # Using cross validation to see how to refine parameters
+# df_cv = run_cross_validation(model = m)
+# df_p, mae, rmse = calculate_performance_metrics(df_cv)
+# best_params, best_rmse = hyperparameter_tuning(training_set_pd)
+# print("Best Parameters:", best_params)
+# print("Best RMSE:", best_rmse)
+# evaluate_model(best_params, training_set_pd)

@@ -2,7 +2,7 @@ import numpy as np
 from pyspark.sql import SparkSession
 import prophet as fbprophet
 from prophet.utilities import regressor_coefficients
-from spark_initialize import spark
+from src.spark_initialize import spark
 import pyspark.pandas as ps
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
@@ -40,9 +40,13 @@ def fb_prophet(training_set_pd):
 def coefficient_regressor(m):
     print(regressor_coefficients(m))
     
-def future_dataframe(m, df):
+def future_dataframe(m, df):    
     future = m.make_future_dataframe(periods=test_days, freq='d')
-    future = ps.merge(future, df[[ 'ds', 'arr_del15',  'weather_ct']], on='ds', how= 'inner')
+    df = df.reset_index()
+    future = ps.merge(future, df, on='ds', how= 'left')
+    future = future[['ds', 'arr_del15', 'weather_ct']]
+    future['arr_del15'].fillna(method='ffill', inplace=True) 
+    future['weather_ct'].fillna(method='ffill', inplace=True)
     return future
 
 def forcast(m, future):

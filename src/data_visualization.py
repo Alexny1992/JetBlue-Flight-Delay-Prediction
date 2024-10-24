@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
-import mpld3
-from mpld3 import plugins
-from mpld3 import plugins, fig_to_html
-from IPython.display import display, HTML
+# import mpld3
+# from mpld3 import plugins
+# from mpld3 import plugins, fig_to_html
+# from IPython.display import display, HTML
 
 
 def plot_data_matplotlib(df, x, y, title, x_label, y_label):
