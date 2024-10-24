@@ -20,6 +20,10 @@ Key features include:
 - Predictive modeling using Prophet with custom regressors.
 - Fine-tuning the model using cross-validation to minimize **Mean Squared Error (MSE)** and **Absolute Mean Error (MAE)**.
 
+## Output
+![Forcast](https://github.com/Alexny1992/JetBlue-Flight-Delay-Prediction/blob/main/image/Forcast.png)
+![Forcast Components](https://github.com/Alexny1992/JetBlue-Flight-Delay-Prediction/blob/main/image/Forcast_Components.png)
+
 ## Getting Started
 
 ### Technology Used
