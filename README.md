@@ -12,7 +12,7 @@
 
 ## Introduction
 
-This project aims to predict future flight delays using the power of **Apache Spark** for big data processing and **Facebook Prophet** for time-series forecasting. By analyzing large datasets from the **U.S. Bureau of Transportation Statistics**, we uncover patterns and trends that contribute to delays, helping airlines optimize operations and improve customer experiences.
+This project aims to predict future flight delays using **Apache Spark** for big data processing and **Facebook Prophet** for time-series forecasting. By analyzing large datasets from the **U.S. Bureau of Transportation Statistics**, I uncover patterns and trends that contribute to delays, helping airlines optimize operations and improve customer experiences.
 
 Key features include:
 - Efficient data loading and preprocessing with Spark.
